@@ -22,7 +22,7 @@ self.addEventListener("install", async (e) => {
 
 // activate
 self.addEventListener("activate", e => {
-    evt.waitUntil(
+    e.waitUntil(
         caches.keys().then(keyList => {
           return Promise.all(
             keyList.map(key => {
