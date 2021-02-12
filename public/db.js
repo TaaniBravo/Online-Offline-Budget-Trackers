@@ -5,7 +5,7 @@ const request = indexedDB.open("budget", 1);
 // Create object store called "pending" and autoIncrement to true.
 request.onupgradeneeded = (e) => {
   const db = e.target.result;
-  const pendingStore = db.createOobjectStore("pending", {
+  const pendingStore = db.createObjectStore("pending", {
     autoIncrement: true,
   });
 };
@@ -42,7 +42,7 @@ const checkDatabase = () => {
       if (getAll.result.length > 0) {
         const res = await fetch("/api/transaction/bulk", {
             method: "POST",
-            body: JSON.stringify(getall.result),
+            body: JSON.stringify(getAll.result),
             headers: {
                 Accept: "application/json, text/plain, */*",
                 "Content-Type": "application/json"
